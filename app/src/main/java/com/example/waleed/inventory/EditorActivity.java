@@ -144,7 +144,7 @@ public class EditorActivity extends AppCompatActivity implements
                 String [] to  = {"waleed6886@gmail.com"};
                 intent.putExtra(Intent.EXTRA_EMAIL, to);
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Hi this was sent from the inventory App");
-                intent.putExtra(Intent.EXTRA_TEXT, "I need more "+mNameEditText +"and the price is "+mPriceEditText);
+                intent.putExtra(Intent.EXTRA_TEXT, "I need more "+mNameEditText.getText().toString().trim() +" and the price is "+mPriceEditText.getText().toString().trim());
                 intent.setType("message/rfc822");
                 startActivity(Intent.createChooser(intent, "Launch Email"));
             }
