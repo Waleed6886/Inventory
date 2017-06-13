@@ -77,13 +77,15 @@ public class ItemCursorAdapter extends CursorAdapter {
         quantityTextView.setText(String.valueOf(itemQuantity));
         priceTextView.setText(itemPrice + "$");
         Glide.with(context).load(thumbUri).placeholder(ic_launcher).error(ic_launcher).crossFade().centerCrop().into(productImageView);
-        mCurrentItemUri = ContentUris.withAppendedId(ItemEntry.CONTENT_URI, ID);
+        quantityButton.setTag(ID);
         quantityButton.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
             public void onClick(View v) {
+                int id = (int)v.getTag();
                 Log.i("quantity",quantityTextView.getText().toString());
+                mCurrentItemUri = ContentUris.withAppendedId(ItemEntry.CONTENT_URI, id);
                 availableItems = itemQuantity;
                 Log.i("availableItems", String.valueOf(availableItems));
                 if(availableItems > 0) {
